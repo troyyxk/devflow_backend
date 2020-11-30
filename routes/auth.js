@@ -6,7 +6,7 @@ const { Member } = require("../models/Member");
 var cors = require('cors')
 
 // localhost:5000/auth/check-session
-router.get("/check-session", cors(), async (req, res) => {
+router.get("/check-session", async (req, res) => {
     console.log(req.session)
     if (req.session.memberId) {
         res.status(200).send(req.session.memberId);
@@ -51,9 +51,31 @@ router.put("/signup", async (req, res) => {
 });
 
 
+// router.post("/login", async (req, res) => {
+//     console.log("Attempt login")
+//     console.log(req.body)
+//     const { userName, password } = req.body.data;
+
+//     if (!userName || !password) {
+//         console.log(userName, password)
+//         res.status(400).send("Missing login fields");
+//         return;
+//     }
+//     let member = await Member.findOne({ userName: userName, password: password });
+//     if (!member) {
+//         console.log("no such user")
+//         res.status(400).send("Invalid login fields");
+//         return;
+//     }
+//     req.session.memberId = member._id;
+//     await req.session.save();
+//     console.log("Successful login")
+//     console.log(req.session)
+//     res.status(200).send(member);
+// });
+
 router.post("/login", async (req, res) => {
     console.log("Attempt login")
-    console.log(req.body)
     const { userName, password } = req.body.data;
 
     if (!userName || !password) {
