@@ -24,14 +24,6 @@ const Member = mongoose.model('Member', {
     },
     teamId: {
         type: String,
-        required: true,
-    },
-    teamId: {
-        type: String,
-        required: true,
-    },
-    teamId: {
-        type: String,
         default: ""
     },
     password: {

@@ -11,7 +11,7 @@ const Notification = mongoose.model('Notification', {
     },
     from: {
         type: String,
-        required: true,
+        default: "",
     },
     to: {
         type: String,
